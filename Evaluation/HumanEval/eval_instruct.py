@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 import torch
+from src.model import AutoTokenizer, AutoModelForCausalLM
 from pathlib import Path
 from tqdm import tqdm
 
