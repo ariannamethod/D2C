@@ -9,6 +9,7 @@ https://github.com/huggingface/transformers/blob/main/src/transformers/models/gp
 
 import math
 import inspect
+import os
 from dataclasses import dataclass
 
 import torch
@@ -273,3 +274,53 @@ class GPT(nn.Module):
             idx = torch.cat((idx, idx_next), dim=1)
 
         return idx
+
+
+class SimpleTokenizer:
+    """A minimal tokenizer used for evaluation without transformers."""
+
+    def __init__(self, model_path: str):
+        self.model_path = model_path
+
+    @classmethod
+    def from_pretrained(cls, model_path: str, trust_remote_code: bool = True):
+        return cls(model_path)
+
+    def encode(self, text: str):
+        return [ord(c) for c in text]
+
+    def decode(self, tokens, skip_special_tokens: bool = True):
+        return "".join(chr(int(t)) for t in tokens)
+
+    def apply_chat_template(self, messages, return_tensors=None, add_generation_prompt: bool = False):
+        text = "".join(m["content"] for m in messages)
+        if add_generation_prompt:
+            text += ""
+        if return_tensors == "pt":
+            return torch.tensor([self.encode(text)], dtype=torch.long)
+        return text
+
+    def convert_tokens_to_ids(self, token: str):
+        if token == "<|EOT|>":
+            return 0
+        return ord(token[0])
+
+
+class AutoTokenizer(SimpleTokenizer):
+    pass
+
+
+class AutoModelForCausalLM(GPT):
+    """A thin wrapper over :class:`GPT` with a ``from_pretrained`` helper."""
+
+    @classmethod
+    def from_pretrained(cls, model_path: str, device_map=None, trust_remote_code: bool = True, torch_dtype=None):
+        config = GPTConfig()
+        model = cls(config)
+        ckpt_file = model_path
+        if os.path.isdir(model_path):
+            ckpt_file = os.path.join(model_path, "pytorch_model.bin")
+        if os.path.isfile(ckpt_file):
+            state = torch.load(ckpt_file, map_location="cpu")
+            model.load_state_dict(state)
+        return model

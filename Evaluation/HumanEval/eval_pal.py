@@ -9,6 +9,7 @@ import subprocess
 import sys
 from accelerate import Accelerator
 from accelerate import DistributedDataParallelKwargs
+from src.model import AutoTokenizer, AutoModelForCausalLM
 from pathlib import Path
 from argparse import ArgumentParser
 from humaneval import HumanEval as evaltor

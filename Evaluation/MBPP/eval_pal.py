@@ -12,6 +12,7 @@ from accelerate import DistributedDataParallelKwargs
 from pathlib import Path
 from argparse import ArgumentParser
 from mbpp import MBPP as evaltor
+from src.model import AutoTokenizer, AutoModelForCausalLM
 
 if __name__ == '__main__':
     kwargs_handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
