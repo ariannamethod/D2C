@@ -66,9 +66,19 @@ More evaluation details can be found in the [Detailed Evaluation](#6-detailed-ev
 
 
 ### 4. How to Use
-Before proceeding, you'll need to install the necessary dependencies. You can do this by running the following command:
+Before proceeding, you'll need to install the necessary dependencies. The base dependencies can be installed with:
 ```
 pip install -r requirements.txt
+```
+If you would like to launch the Gradio demo or fine‑tune the model, install the corresponding extra requirements:
+```
+pip install -r requirements-demo.txt
+pip install -r requirements-finetune.txt
+```
+
+Launch the demo after installing its requirements:
+```bash
+python demo/app.py
 ```
 
 Here are some examples of how to use our model.
@@ -278,7 +288,7 @@ We provide script `finetune/finetune_d2c.py` for users to finetune our models on
 The script supports the training with [DeepSpeed](https://github.com/microsoft/DeepSpeed). You need install required packages by:
 
 ```bash
-pip install -r finetune/requirements.txt
+pip install -r requirements-finetune.txt
 ```
 
 Please follow [Sample Dataset Format](#) to prepare your training data.

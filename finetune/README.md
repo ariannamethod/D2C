@@ -5,7 +5,7 @@ We provide script `finetune_d2c.py` for users to finetune our models on downstre
 The script supports the training with [DeepSpeed](https://github.com/microsoft/DeepSpeed). You need install required packages by:
 
 ```bash
-pip install -r requirements.txt
+pip install -r ../requirements-finetune.txt
 ```
 
 Please follow [Sample Dataset Format](https://huggingface.co/datasets/nickrosh/Evol-Instruct-Code-80k-v1) to prepare your training data.
