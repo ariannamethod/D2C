@@ -4,7 +4,7 @@ from model import GPT, GPTConfig
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate using DeepSeek model without HF")
+    parser = argparse.ArgumentParser(description="Generate using D2C model without HF")
     parser.add_argument('--checkpoint', type=str, required=False, help='path to model checkpoint')
     parser.add_argument('--start', type=str, default="\n", help='start prompt')
     parser.add_argument('--num_tokens', type=int, default=50)

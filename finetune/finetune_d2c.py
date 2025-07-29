@@ -23,7 +23,7 @@ class JsonDataset(Dataset):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Train DeepSeek model without HF')
+    parser = argparse.ArgumentParser(description='Train D2C model without HF')
     parser.add_argument('--data', required=True, help='path to training jsonl')
     parser.add_argument('--epochs', type=int, default=1)
     parser.add_argument('--lr', type=float, default=3e-4)
