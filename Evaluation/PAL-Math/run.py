@@ -186,7 +186,7 @@ def eval(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_name", default="math", type=str)
-    parser.add_argument("--model_name_or_path", default="deepseek/deepseek-coder-1b-python", type=str)
+    parser.add_argument("--model_name_or_path", default="deepseek-ai/d2c-1.3b-base", type=str)
     parser.add_argument("--batch_size", default=16, type=int)
     parser.add_argument("--max_context_length", default=2048, type=int)
     parser.add_argument("--max_output_length", default=512, type=int)

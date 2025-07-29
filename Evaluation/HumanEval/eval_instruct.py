@@ -10,7 +10,7 @@ data_abs_dir = Path(__file__).parent / "data"
 from utils.utils import extract_generation_code, languge_settings
 from human_eval.evaluation import evaluate_functional_correctness
 
-def build_deepseekcoder_instruction(languge: str, question: str):
+def build_d2c_instruction(languge: str, question: str):
     return '''
 Please continue to complete the function. You are not allowed to modify the given code and do the completion only. Please return all completed function in a codeblock. Here is the given code to do completion:
 ```{}
@@ -19,7 +19,7 @@ Please continue to complete the function. You are not allowed to modify the give
 '''.strip().format(languge.lower(), question.strip())
 
 def generate_one(example, lang, tokenizer, model):
-    prompt = build_deepseekcoder_instruction(languge_settings[lang]['full_name'], example['prompt'])
+    prompt = build_d2c_instruction(languge_settings[lang]['full_name'], example['prompt'])
     inputs = tokenizer.apply_chat_template(
         [{'role': 'user', 'content': prompt }],
         return_tensors="pt",

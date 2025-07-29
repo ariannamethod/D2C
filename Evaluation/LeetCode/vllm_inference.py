@@ -6,7 +6,7 @@ version = "20240121-Jul"
 
 def generate_batch(examples, tokenizer, llm, model: str):
     stop = None
-    if model == 'deepseekcoder-instruct':
+    if model == 'd2c-instruct':
         prompts = [
             tokenizer.apply_chat_template([{'role': 'user', 'content': ex['prompt_sft'] }], tokenize=False, add_generation_prompt=True)
             for ex in examples
@@ -29,7 +29,7 @@ def generate_batch(examples, tokenizer, llm, model: str):
 
     return examples
 
-def generate_main(data_path: str, model_name_or_path: str, saved_path: str, model_type: str='deepseekcoder-instruct', cot: bool=False):
+def generate_main(data_path: str, model_name_or_path: str, saved_path: str, model_type: str='d2c-instruct', cot: bool=False):
     examples = [json.loads(x) for x in open(data_path).readlines()]
     def _convert_for_sft(ex):
         ex['prompt_sft'] = ex["prompt_sft"] + "\nYou need first write a step-by-step outline and then write the code."
@@ -70,8 +70,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', type=str, default=Path(__file__).parent.joinpath(f"data/{version}.jsonl").as_posix())
-    parser.add_argument('--model_name_or_path', type=str, default='deepseek-ai/deepseek-coder-7b-instruct')
-    parser.add_argument('--saved_path', type=str, default=f'output/{version}.deepseek-coder-7b-instruct.jsonl')
+    parser.add_argument('--model_name_or_path', type=str, default='deepseek-ai/d2c-7b-instruct')
+    parser.add_argument('--saved_path', type=str, default=f'output/{version}.d2c-7b-instruct.jsonl')
     parser.add_argument('--cot', action='store_true', default=False)
     args = parser.parse_args()
 
