@@ -1,9 +1,9 @@
 <p align="center">
 <img width="1000px" alt="DeepSeek Coder" src="pictures/logo.png">
 </p>
-<p align="center"><a href="https://www.deepseek.com/">[<img src="pictures/home.png" width="20px"> Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with DeepSeek Coder]</a> | <a href="https://huggingface.co/deepseek-ai">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
+<p align="center"><a href="https://www.deepseek.com/">[<img src="pictures/home.png" width="20px"> Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with DeepSeek Coder]</a> | <a href="#">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
 <p align="center">
-  <a href="https://huggingface.co/papers/2401.14196"><b>Paper Link</b>👁️</a>
+  <a href="#"><b>Paper Link</b>👁️</a>
 </p>
 <hr>
 
@@ -68,7 +68,6 @@ Before proceeding, you'll need to install the necessary dependencies. You can do
 ```
 pip install -r requirements.txt
 ```
-A demo is also available on the [🤗 Hugging Face Space](https://huggingface.co/spaces/deepseek-ai/deepseek-coder-33b-instruct), and you can run the demo locally using `app.py` in the [demo](https://github.com/deepseek-ai/deepseek-coder/tree/main/demo) folder.  (Thanks to all the HF team for their support)
 
 Here are some examples of how to use our model.
 
@@ -280,7 +279,7 @@ The script supports the training with [DeepSpeed](https://github.com/microsoft/D
 pip install -r finetune/requirements.txt
 ```
 
-Please follow [Sample Dataset Format](https://huggingface.co/datasets/nickrosh/Evol-Instruct-Code-80k-v1) to prepare your training data.
+Please follow [Sample Dataset Format](#) to prepare your training data.
 Each line is a json-serialized string with two required fields `instruction` and `output`.
 
 After data preparation, you can use the sample shell script to finetune `deepseek-ai/deepseek-coder-6.7b-instruct`. 
@@ -385,32 +384,6 @@ print(generated_text)
 
 #### Could You Provide the tokenizer.model File for Model Quantization?
 
-DeepSeek Coder utilizes the [HuggingFace Tokenizer](https://huggingface.co/docs/tokenizers/index) to implement the Bytelevel-BPE algorithm, with specially designed pre-tokenizers to ensure optimal performance. Currently, there is no direct way to convert the tokenizer into a SentencePiece tokenizer. We are contributing to the open-source quantization methods facilitate the usage of HuggingFace Tokenizer.
-
-##### GGUF(llama.cpp)
-
-We have submitted a [PR](https://github.com/ggerganov/llama.cpp/pull/4070) to the popular quantization repository [llama.cpp](https://github.com/ggerganov/llama.cpp) to fully support all HuggingFace pre-tokenizers, including ours.
-
-While waiting for the PR to be merged, you can generate your GGUF model using the following steps:
-
-```bash
-git clone https://github.com/DOGEwbx/llama.cpp.git
-cd llama.cpp
-git checkout regex_gpt2_preprocess
-# set up the environment according to README
-make
-python3 -m pip install -r requirements.txt
-# generate GGUF model
-python convert-hf-to-gguf.py <MODEL_PATH> --outfile <GGUF_PATH> --model-name deepseekcoder
-# use q4_0 quantization as an example
-./quantize <GGUF_PATH> <OUTPUT_PATH> q4_0
-./main -m <OUTPUT_PATH> -n 128 -p <PROMPT>
-```
-##### GPTQ(exllamav2)
-
-`UPDATE:`[exllamav2](https://github.com/turboderp/exllamav2) has been able to support Huggingface Tokenizer. Please pull the latest version and try out.
-
-Remember to set RoPE scaling to 4 for correct output, more discussion could be found in this [PR](https://github.com/turboderp/exllamav2/pull/189).
 
 #### How to use the deepseek-coder-instruct to complete the code?
 
