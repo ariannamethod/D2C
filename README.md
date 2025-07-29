@@ -1,16 +1,18 @@
+# D2C
+
 <p align="center">
-<img width="1000px" alt="DeepSeek Coder" src="pictures/logo.png">
+<img width="1000px" alt="D2C" src="pictures/logo.png">
 </p>
-<p align="center"><a href="https://www.deepseek.com/">[<img src="pictures/home.png" width="20px"> Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with DeepSeek Coder]</a> | <a href="#">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
+<p align="center"><a href="https://www.deepseek.com/">[<img src="pictures/home.png" width="20px"> Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with D2C]</a> | <a href="#">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
 <p align="center">
   <a href="#"><b>Paper Link</b>👁️</a>
 </p>
 <hr>
 
 
-### 1. Introduction of DeepSeek Coder
+### 1. Introduction of D2C
 
-DeepSeek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and an extra fill-in-the-blank task, to support project-level code completion and infilling. For coding capabilities, DeepSeek Coder achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks.
+D2C is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and an extra fill-in-the-blank task, to support project-level code completion and infilling. For coding capabilities, D2C achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks.
 
 <p align="center">
 <img src="pictures/result.png" alt="result" width="70%">
@@ -28,7 +30,7 @@ DeepSeek Coder is composed of a series of code language models, each trained fro
 `['ada', 'agda', 'alloy', 'antlr', 'applescript', 'assembly', 'augeas', 'awk', 'batchfile', 'bluespec', 'c', 'c-sharp', 'clojure', 'cmake', 'coffeescript', 'common-lisp', 'cpp', 'css', 'cuda', 'dart', 'dockerfile', 'elixir', 'elm', 'emacs-lisp', 'erlang', 'f-sharp', 'fortran', 'glsl', 'go', 'groovy', 'haskell', 'html', 'idris', 'isabelle', 'java', 'java-server-pages', 'javascript', 'json', 'julia', 'jupyter-notebook', 'kotlin', 'lean', 'literate-agda', 'literate-coffeescript', 'literate-haskell', 'lua', 'makefile', 'maple', 'markdown', 'mathematica', 'matlab', 'ocaml', 'pascal', 'perl', 'php', 'powershell', 'prolog', 'protocol-buffer', 'python', 'r', 'racket', 'restructuredtext', 'rmarkdown', 'ruby', 'rust', 'sas', 'scala', 'scheme', 'shell', 'smalltalk', 'solidity', 'sparql', 'sql', 'stan', 'standard-ml', 'stata', 'systemverilog', 'tcl', 'tcsh', 'tex', 'thrift', 'typescript', 'verilog', 'vhdl', 'visual-basic', 'xslt', 'yacc', 'yaml', 'zig']`
 
 ### 2. Evaluation Results
-We evaluate DeepSeek Coder on various coding-related benchmarks.
+We evaluate D2C on various coding-related benchmarks.
 Only `pass@1` results on HumanEval (Python and Multilingual), MBPP, and DS-1000 are reported here:
 
 <p align="center">
@@ -36,9 +38,9 @@ Only `pass@1` results on HumanEval (Python and Multilingual), MBPP, and DS-1000 
 </p>
 
 
-The result shows that DeepSeek-Coder-Base-33B significantly outperforms existing open-source code LLMs. Compared with CodeLlama-34B, it leads by 7.9%, 9.3%, 10.8% and 5.9% respectively on HumanEval Python, HumanEval Multilingual, MBPP and DS-1000.
-Surprisingly, our DeepSeek-Coder-Base-7B reaches the performance of CodeLlama-34B.
-The DeepSeek-Coder-Instruct-33B model after instruction tuning outperforms GPT35-turbo on HumanEval and achieves comparable results with GPT35-turbo on MBPP.
+The result shows that D2C-Base-33B significantly outperforms existing open-source code LLMs. Compared with CodeLlama-34B, it leads by 7.9%, 9.3%, 10.8% and 5.9% respectively on HumanEval Python, HumanEval Multilingual, MBPP and DS-1000.
+Surprisingly, our D2C-Base-7B reaches the performance of CodeLlama-34B.
+The D2C-Instruct-33B model after instruction tuning outperforms GPT35-turbo on HumanEval and achieves comparable results with GPT35-turbo on MBPP.
 
 More evaluation details can be found in the [Detailed Evaluation](#6-detailed-evaluation-results).
 
@@ -57,8 +59,8 @@ More evaluation details can be found in the [Detailed Evaluation](#6-detailed-ev
 #### Model Training
 
 - Step 1: Initially pre-trained with a dataset consisting of 87% code, 10% code-related language (Github Markdown and StackExchange), and 3% non-code-related Chinese language. Models are pre-trained using 1.8T tokens and a 4K window size in this step.
-- Step 2: Further Pre-training using an extended 16K window size on an additional 200B tokens, resulting in foundational models (**DeepSeek-Coder-Base**).
-- Step 3: Instruction Fine-tuning on 2B tokens of instruction data, resulting in instruction-tuned models (**DeepSeek-Coder-Instruct**).
+- Step 2: Further Pre-training using an extended 16K window size on an additional 200B tokens, resulting in foundational models (**D2C-Base**).
+- Step 3: Instruction Fine-tuning on 2B tokens of instruction data, resulting in instruction-tuned models (**D2C-Instruct**).
 
 <img src="pictures/model_pretraining.png" alt="model_pretraining" width="100%">
 
@@ -75,8 +77,8 @@ Here are some examples of how to use our model.
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
 input_text = "#write a quick sort algorithm"
 inputs = tokenizer(input_text, return_tensors="pt").to(model.device)
 outputs = model.generate(**inputs, max_length=128)
@@ -102,8 +104,8 @@ def quick_sort(arr):
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
 input_text = """<｜fim▁begin｜>def quick_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -129,8 +131,8 @@ This code will output the following result:
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-instruct", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-instruct", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-instruct", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-instruct", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
 messages=[
     { 'role': 'user', 'content': "write a quick sort algorithm in python."}
 ]
@@ -162,7 +164,7 @@ This code works by selecting a 'pivot' element from the array and partitioning t
 
 If you don't want to use the provided API `apply_chat_template` which loads the template from `tokenizer_config.json`, you can use the following template to chat with our model. Replace the `['content']` with your instructions and the model's previous (if any) responses, then the model will generate the response to the currently given instruction.
 ```
-You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
+You are an AI programming assistant, utilizing the D2C model, developed by D2C Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
 ### Instruction:
 ['content']
 ### Response:
@@ -178,8 +180,8 @@ You are an AI programming assistant, utilizing the DeepSeek Coder model, develop
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
 
 input_text = """#utils.py
 import torch
@@ -265,13 +267,13 @@ print(tokenizer.decode(outputs[0]))
 ```
 
 ---
-In the following scenario, the DeepSeek-Coder-6.7B model effectively calls a class **IrisClassifier** and its member function from the `model.py` file, and also utilizes functions from the `utils.py` file, to correctly complete the **main** function in the `main.py` file for model training and evaluation.
+In the following scenario, the D2C-6.7B model effectively calls a class **IrisClassifier** and its member function from the `model.py` file, and also utilizes functions from the `utils.py` file, to correctly complete the **main** function in the `main.py` file for model training and evaluation.
 
 ![Completion GIF](pictures/completion_demo.gif)
 
-### 5. How to Fine-tune DeepSeek-Coder
+### 5. How to Fine-tune D2C
 
-We provide script `finetune/finetune_deepseekcoder.py` for users to finetune our models on downstream tasks.
+We provide script `finetune/finetune_d2c.py` for users to finetune our models on downstream tasks.
 
 The script supports the training with [DeepSpeed](https://github.com/microsoft/DeepSpeed). You need install required packages by:
 
@@ -282,16 +284,16 @@ pip install -r finetune/requirements.txt
 Please follow [Sample Dataset Format](#) to prepare your training data.
 Each line is a json-serialized string with two required fields `instruction` and `output`.
 
-After data preparation, you can use the sample shell script to finetune `deepseek-ai/deepseek-coder-6.7b-instruct`. 
+After data preparation, you can use the sample shell script to finetune `deepseek-ai/d2c-6.7b-instruct`. 
 Remember to specify `DATA_PATH`, `OUTPUT_PATH`.
 And please choose appropriate hyper-parameters(e.g., `learning_rate`, `per_device_train_batch_size`) according to your scenario.
 
 ```bash
 DATA_PATH="<your_data_path>"
 OUTPUT_PATH="<your_output_path>"
-MODEL="deepseek-ai/deepseek-coder-6.7b-instruct"
+MODEL="deepseek-ai/d2c-6.7b-instruct"
 
-cd finetune && deepspeed finetune_deepseekcoder.py \
+cd finetune && deepspeed finetune_d2c.py \
     --model_name_or_path $MODEL_PATH \
     --data_path $DATA_PATH \
     --output_dir $OUTPUT_PATH \
@@ -316,7 +318,7 @@ cd finetune && deepspeed finetune_deepseekcoder.py \
 
 ### 6. Detailed Evaluation Results
 
-The reproducible code for the following evaluation results can be found in the [Evaluation](https://github.com/deepseek-ai/deepseek-coder/tree/main/Evaluation) directory.
+The reproducible code for the following evaluation results can be found in the [Evaluation](https://github.com/deepseek-ai/d2c/tree/main/Evaluation) directory.
 #### 1) Multilingual HumanEval Benchmark
 ![HumanEval](pictures/HumanEval.png)
 
@@ -340,7 +342,7 @@ from vllm import LLM, SamplingParams
 
 tp_size = 4 # Tensor Parallelism
 sampling_params = SamplingParams(temperature=0.7, top_p=0.9, max_tokens=100)
-model_name = "deepseek-ai/deepseek-coder-6.7b-base"
+model_name = "deepseek-ai/d2c-6.7b-base"
 llm = LLM(model=model_name, trust_remote_code=True, gpu_memory_utilization=0.9, tensor_parallel_size=tp_size)
 
 prompts = [
@@ -362,7 +364,7 @@ from vllm import LLM, SamplingParams
 
 tp_size = 4 # Tensor Parallelism
 sampling_params = SamplingParams(temperature=0.7, top_p=0.9, max_tokens=100)
-model_name = "deepseek-ai/deepseek-coder-6.7b-instruct"
+model_name = "deepseek-ai/d2c-6.7b-instruct"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 llm = LLM(model=model_name, trust_remote_code=True, gpu_memory_utilization=0.9, tensor_parallel_size=tp_size)
 
@@ -385,24 +387,24 @@ print(generated_text)
 #### Could You Provide the tokenizer.model File for Model Quantization?
 
 
-#### How to use the deepseek-coder-instruct to complete the code?
+#### How to use the d2c-instruct to complete the code?
 
-Although the deepseek-coder-instruct models are not specifically trained for code completion tasks during supervised fine-tuning (SFT), they retain the capability to perform code completion effectively. To enable this functionality, you simply need to adjust the eos_token_id parameter. Set the eos_token_id to 32014, as opposed to its default value of 32021 in the deepseek-coder-instruct configuration. This modification prompts the model to recognize the end of a sequence differently, thereby facilitating code completion tasks.
+Although the d2c-instruct models are not specifically trained for code completion tasks during supervised fine-tuning (SFT), they retain the capability to perform code completion effectively. To enable this functionality, you simply need to adjust the eos_token_id parameter. Set the eos_token_id to 32014, as opposed to its default value of 32021 in the d2c-instruct configuration. This modification prompts the model to recognize the end of a sequence differently, thereby facilitating code completion tasks.
 
 
 ### 8. Resources
-[awesome-deepseek-coder](https://github.com/deepseek-ai/awesome-deepseek-coder) is a curated list of open-source projects related to DeepSeek Coder.
+[awesome-d2c](https://github.com/deepseek-ai/awesome-d2c) is a curated list of open-source projects related to D2C.
 
 ### 9. License
-This code repository is licensed under the MIT License. The use of DeepSeek Coder models is subject to the Model License. DeepSeek Coder supports commercial use.
+This code repository is licensed under the MIT License. The use of D2C models is subject to the Model License. D2C supports commercial use.
 
 See the [LICENSE-CODE](LICENSE-CODE) and [LICENSE-MODEL](LICENSE-MODEL) for more details.
 
 ### 10. Citation
 ```
-@misc{deepseek-coder,
+@misc{d2c,
   author = {Daya Guo, Qihao Zhu, Dejian Yang, Zhenda Xie, Kai Dong, Wentao Zhang, Guanting Chen, Xiao Bi, Y. Wu, Y.K. Li, Fuli Luo, Yingfei Xiong, Wenfeng Liang},
-  title = {DeepSeek-Coder: When the Large Language Model Meets Programming -- The Rise of Code Intelligence},
+  title = {D2C: When the Large Language Model Meets Programming -- The Rise of Code Intelligence},
   journal = {CoRR},
   volume = {abs/2401.14196},
   year = {2024},

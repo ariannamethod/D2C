@@ -10,19 +10,19 @@ Please follow the following two steps to evaluate the model's performance on our
 cd Evaluation/LeetCode
 
 # Set the model or path here
-MODEL="deepseek-ai/deepseek-coder-7b-instruct"
+MODEL="deepseek-ai/d2c-7b-instruct"
 
-python vllm_inference.py --model_name_or_path $MODEL --saved_path output/20240121-Jul.deepseek-coder-7b-instruct.jsonl
+python vllm_inference.py --model_name_or_path $MODEL --saved_path output/20240121-Jul.d2c-7b-instruct.jsonl
 ```
 
 If you want to evaluate the model with COT, please add `--cot` to the command:
 ```bash
-python vllm_inference.py --model_name_or_path $MODEL --saved_path output/20240121-Jul.deepseek-coder-7b-instruct.jsonl --cot
+python vllm_inference.py --model_name_or_path $MODEL --saved_path output/20240121-Jul.d2c-7b-instruct.jsonl --cot
 ```
 
 2. Run `evaluate_leetcode.py` to get evaluation results.
 ```bash
-python evaluate_leetcode.py --generation_path output/20240121-Jul.deepseek-coder-7b-instruct.jsonl --result_path output/20240121-Jul.deepseek-coder-7b-instruct.result.jsonl
+python evaluate_leetcode.py --generation_path output/20240121-Jul.d2c-7b-instruct.jsonl --result_path output/20240121-Jul.d2c-7b-instruct.result.jsonl
 ```
 
 ## 3. Experimental Results
@@ -39,10 +39,10 @@ We report experimental results here:
 | GPT-4-Turbo                 | -    | 73.3%     | 31.9%       | 25.0%     | 40.6%        |
 | GPT-4-Turbo + CoT           | -    | 71.1%     | 35.2%       | 25.0%     | 41.8%        |
 | | | | |
-| DeepSeek-Coder-Instruct     | 1.3B | 22.2%     | 1.1%        | 4.5%      | 7.2%         |
-| DeepSeek-Coder-Instruct + CoT | 1.3B | 22.2%   | 2.2%        | 2.3%      | 7.2%         |
-| DeepSeek-Coder-Instruct     | 6.7B | 44.4%     | 12.1%       | 9.1%      | 19.4%        |
-| DeepSeek-Coder-Instruct + CoT | 6.7B | 44.4%   | 17.6%       | 4.5%      | 21.1%        |
-| DeepSeek-Coder-Instruct     | 33B  | 57.8%     | 22.0%       | 9.1%      | 27.8%        |
-| DeepSeek-Coder-Instruct + CoT | 33B | 53.3%    | 25.3%       | 11.4%     | 28.9%        |
+| D2C-Instruct     | 1.3B | 22.2%     | 1.1%        | 4.5%      | 7.2%         |
+| D2C-Instruct + CoT | 1.3B | 22.2%   | 2.2%        | 2.3%      | 7.2%         |
+| D2C-Instruct     | 6.7B | 44.4%     | 12.1%       | 9.1%      | 19.4%        |
+| D2C-Instruct + CoT | 6.7B | 44.4%   | 17.6%       | 4.5%      | 21.1%        |
+| D2C-Instruct     | 33B  | 57.8%     | 22.0%       | 9.1%      | 27.8%        |
+| D2C-Instruct + CoT | 33B | 53.3%    | 25.3%       | 11.4%     | 28.9%        |
 

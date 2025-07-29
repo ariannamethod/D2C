@@ -1,6 +1,6 @@
 ## 1. Introduction
 
-We provide a test script to evaluate the capability of the **deepseek-coder** model to solve mathematical problems using external tools (Python interpreter). We evaluate it using the [PAL](https://arxiv.org/pdf/2211.10435.pdf) method on seven datasets: **GSM8k, MATH, GSM-Hard, SVAMP, TabMWP, ASDiv, and MAWPS**.
+We provide a test script to evaluate the capability of the **d2c** model to solve mathematical problems using external tools (Python interpreter). We evaluate it using the [PAL](https://arxiv.org/pdf/2211.10435.pdf) method on seven datasets: **GSM8k, MATH, GSM-Hard, SVAMP, TabMWP, ASDiv, and MAWPS**.
 
 
 
@@ -14,10 +14,10 @@ pip install sympy==1.12 pebble timeout-decorator transformers
 
 ## 3. Evaluation
 
-We provide an example of testing the **deepseek-coder-1.3b-base** model on the **gsm8k** dataset using **8** GPUs. If you wish to use a different model or dataset, you can modify it as needed.
+We provide an example of testing the **d2c-1.3b-base** model on the **gsm8k** dataset using **8** GPUs. If you wish to use a different model or dataset, you can modify it as needed.
 
 ```bash
-MODEL_NAME_OR_PATH=deepseek-ai/deepseek-coder-1.3b-base
+MODEL_NAME_OR_PATH=deepseek-ai/d2c-1.3b-base
 DATA=gsm8k # 'math' 'gsm8k' 'gsm-hard' 'svamp' 'tabmwp' 'asdiv' 'mawps'
 MODEL_DIR_NAME=${MODEL_NAME_OR_PATH##*/}
 GPU_NUM=8
@@ -55,9 +55,9 @@ We report experimental results here for mathematical reasoning tasks by using py
 | CodeLLama-Base | 13B  | 43.1% | 14.4% | 40.2%    | 59.2% | 60.3%  | 63.6% | 85.3% | 52.3% |
 | CodeLLama-Base | 34B  | 58.2% | 21.2% | 51.8%    | 70.3% | 69.8%  | 70.7% | 91.8% | 62.0% |
 |                |      |       |       |          |       |        |       |       |       |
-| DeepSeek-Coder-Base  | 1.3B   | 14.6% | 16.8% | 14.5%    | 36.7% | 30.0%  | 48.2% | 62.3% | 31.9% |
-| DeepSeek-Coder-MQA-Base  | 5.7B   | 38.8% | 20.0% | 36.8%    | 52.5% | 55.9%  | 63.9% | 84.8% | 50.4% |
-| DeepSeek-Coder-Base  | 6.7B   | 43.2% | 19.2% | 40.3%    | 58.4% | 67.9%  | 67.2% | 87.0% | 54.7% |
-| DeepSeek-Coder-Base  | 33B  | **60.7%** | **29.1%** | **54.1%**    | **71.6%** | **75.3%** | **76.7%** | **93.3%** | **65.8%** |
+| D2C-Base  | 1.3B   | 14.6% | 16.8% | 14.5%    | 36.7% | 30.0%  | 48.2% | 62.3% | 31.9% |
+| D2C-MQA-Base  | 5.7B   | 38.8% | 20.0% | 36.8%    | 52.5% | 55.9%  | 63.9% | 84.8% | 50.4% |
+| D2C-Base  | 6.7B   | 43.2% | 19.2% | 40.3%    | 58.4% | 67.9%  | 67.2% | 87.0% | 54.7% |
+| D2C-Base  | 33B  | **60.7%** | **29.1%** | **54.1%**    | **71.6%** | **75.3%** | **76.7%** | **93.3%** | **65.8%** |
 
 
