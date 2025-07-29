@@ -68,15 +68,23 @@ def inference(args):
     # init python executor
     executor = PythonExecutor(get_answer_expr='solution()')
 
-    # load model
-    torch.set_default_tensor_type(torch.cuda.HalfTensor)
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path, trust_remote_code=True,padding_side="left")
+    # load model on CPU
+    tokenizer = AutoTokenizer.from_pretrained(
+        args.model_name_or_path,
+        trust_remote_code=True,
+        padding_side="left",
+    )
     try:
         tokenizer.pad_token_id = 0
     except:
         # Deal with CodeGeex-2
         pass
-    llm = AutoModelForCausalLM.from_pretrained(args.model_name_or_path, torch_dtype=torch.float16, device_map="auto",trust_remote_code=True)
+    llm = AutoModelForCausalLM.from_pretrained(
+        args.model_name_or_path,
+        torch_dtype=torch.float32,
+        trust_remote_code=True,
+    )
+    llm.to("cpu")
 
     #samples = samples[:32]
     print("dataset:", args.data_name, "samples:", len(samples))
@@ -103,9 +111,9 @@ def inference(args):
             for x in chunk:
                 outputs.append(x)
             continue
-        inputs = tokenizer(chunk, return_tensors="pt",padding=True)
-        input_ids = inputs["input_ids"].cuda()[:,-args.max_context_length:]
-        attention_mask = inputs["attention_mask"].cuda()[:,-args.max_context_length:]
+        inputs = tokenizer(chunk, return_tensors="pt", padding=True)
+        input_ids = inputs["input_ids"][:, -args.max_context_length:]
+        attention_mask = inputs["attention_mask"][:, -args.max_context_length:]
 
         with torch.no_grad():
             generation_output = llm.generate(

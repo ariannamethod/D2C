@@ -5,7 +5,7 @@ from model import GPT, GPTConfig
 config = GPTConfig()
 model = GPT(config)
 model.eval()
-DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+DEVICE = 'cpu'
 model.to(DEVICE)
 
 

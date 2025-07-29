@@ -17,7 +17,7 @@ def main():
         model.load_state_dict(state)
     model.eval()
 
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = 'cpu'
     model.to(device)
 
     idx = torch.tensor([[ord(c) % config.vocab_size for c in args.start]], dtype=torch.long, device=device)
