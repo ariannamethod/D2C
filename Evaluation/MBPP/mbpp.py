@@ -12,7 +12,6 @@ import torch.distributed as dist
 from attrdict import AttrDict
 from tqdm import tqdm
 from human_eval.evaluation import evaluate_functional_correctness
-from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria, StoppingCriteriaList
 from utils.dataset import MBPPDataset
 from utils.utils import cleanup_code
 

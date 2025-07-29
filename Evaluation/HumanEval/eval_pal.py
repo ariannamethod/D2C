@@ -12,7 +12,6 @@ from accelerate import DistributedDataParallelKwargs
 from pathlib import Path
 from argparse import ArgumentParser
 from humaneval import HumanEval as evaltor
-from transformers import AutoTokenizer, AutoModelForCausalLM
 
 if __name__ == '__main__':
     kwargs_handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
