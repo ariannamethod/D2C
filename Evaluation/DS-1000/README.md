@@ -1,6 +1,6 @@
 ## 1. Introduction
 
-We provide a test script to evaluate the performance of the **deepseek-coder** model on code completion benchmarks. We select the widely-used benchmarks: [**DS-1000**](https://github.com/xlang-ai/DS-1000).
+We provide a test script to evaluate the performance of the **d2c** model on code completion benchmarks. We select the widely-used benchmarks: [**DS-1000**](https://github.com/xlang-ai/DS-1000).
 
 ## 2. Evaluation
 
@@ -22,8 +22,8 @@ We report experimental results here for the completion mode of DS-1000. We set t
 | CodeLLama-Base         | 13B  | 46.5%      | 28.6% | 18.2%  | 19.1%   | 18.9% | 27.8%        | 33.3%      | 26.8% |
 | CodeLLama-Base         | 34B  | 50.3%      | 42.7% | 23.0%  | 25.0%   | 28.3% | 33.9%        | 40.0%      | 34.3% |
 | | | | |  |  |  |  |  |  | |
-| DeepSeek-Coder-Base    | 1.3B   | 32.3%      | 21.4% | 9.3%   | 8.8%    | 8.5%  | 16.5%        | 8.9%       | 16.2% |
-| DeepSeek-Coder-Base    | 5.7B   | 51.1%      | 31.8% | 19.9%  | 14.7%   | 17.0% | 29.6%        | 15.6%      | 27.7% |
-| DeepSeek-Coder-Base    | 6.7B   | 48.4%      | 35.5% | 20.6%  | 19.1%   | 22.6% | 38.3%        | 24.4%      | 30.5% |
-| DeepSeek-Coder-Base    | 33B  | 56.1%      | **49.6%** | 25.8%  | 36.8%   | **36.8%** | 40.0%        | **46.7%**      | **40.2%** |
+| D2C-Base    | 1.3B   | 32.3%      | 21.4% | 9.3%   | 8.8%    | 8.5%  | 16.5%        | 8.9%       | 16.2% |
+| D2C-Base    | 5.7B   | 51.1%      | 31.8% | 19.9%  | 14.7%   | 17.0% | 29.6%        | 15.6%      | 27.7% |
+| D2C-Base    | 6.7B   | 48.4%      | 35.5% | 20.6%  | 19.1%   | 22.6% | 38.3%        | 24.4%      | 30.5% |
+| D2C-Base    | 33B  | 56.1%      | **49.6%** | 25.8%  | 36.8%   | **36.8%** | 40.0%        | **46.7%**      | **40.2%** |
 
