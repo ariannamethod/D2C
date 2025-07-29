@@ -10,7 +10,7 @@
 <hr>
 
 
-### 1. Introduction of D2C
+### 1. Introduction to D2C
 
 D2C is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and an extra fill-in-the-blank task, to support project-level code completion and infilling. For coding capabilities, D2C achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks.
 
