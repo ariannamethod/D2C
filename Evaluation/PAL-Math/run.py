@@ -7,7 +7,6 @@ import numpy as np
 from utils.parser import *
 from utils.grader import *
 from utils.python_executor import PythonExecutor
-from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 
 
 def extract_python_block_with_solution(text):

@@ -1,6 +1,5 @@
 from vllm import LLM, SamplingParams
 import json
-from transformers import AutoTokenizer
 from pathlib import Path
 
 version = "20240121-Jul"

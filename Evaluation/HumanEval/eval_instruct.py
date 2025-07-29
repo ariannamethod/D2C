@@ -8,7 +8,6 @@ from tqdm import tqdm
 data_abs_dir = Path(__file__).parent / "data"
 
 from utils.utils import extract_generation_code, languge_settings
-from transformers import AutoTokenizer, AutoModelForCausalLM
 from human_eval.evaluation import evaluate_functional_correctness
 
 def build_deepseekcoder_instruction(languge: str, question: str):
