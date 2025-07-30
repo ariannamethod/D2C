@@ -10,7 +10,7 @@ Please follow the following two steps to evaluate the model's performance on our
 cd Evaluation/LeetCode
 
 # Set the model or path here
-MODEL="deepseek-ai/d2c-7b-instruct"
+MODEL="/path/to/model"
 
 python vllm_inference.py --model_name_or_path $MODEL --saved_path output/20240121-Jul.d2c-7b-instruct.jsonl
 ```
@@ -24,25 +24,4 @@ python vllm_inference.py --model_name_or_path $MODEL --saved_path output/2024012
 ```bash
 python evaluate_leetcode.py --generation_path output/20240121-Jul.d2c-7b-instruct.jsonl --result_path output/20240121-Jul.d2c-7b-instruct.result.jsonl
 ```
-
-## 3. Experimental Results
-We report experimental results here:
-
-| Model                       | Size | Easy (45) | Medium (91) | Hard (44) | Overall(180) |
-|-----------------------------|------|-----------|-------------|-----------|--------------|
-| WizardCoder-V1.0            | 15B  | 17.8%     | 1.1%        | 0.0%      | 5.0%         |
-| CodeLlama-Instruct          | 34B  | 24.4%     | 4.4%        | 4.5%      | 9.4%         |
-| Phind-CodeLlama-V2          | 34B  | 26.7%     | 8.8%        | 9.1%      | 13.3%        |
-| | | | |
-| GPT-3.5-Turbo               | -    | 46.7%     | 15.4 %      | 15.9%     | 23.3%        |
-| GPT-3.5-Turbo + CoT         | -    | 42.2%     | 15.4%       | 20.5%     | 23.3%        |
-| GPT-4-Turbo                 | -    | 73.3%     | 31.9%       | 25.0%     | 40.6%        |
-| GPT-4-Turbo + CoT           | -    | 71.1%     | 35.2%       | 25.0%     | 41.8%        |
-| | | | |
-| D2C-Instruct     | 1.3B | 22.2%     | 1.1%        | 4.5%      | 7.2%         |
-| D2C-Instruct + CoT | 1.3B | 22.2%   | 2.2%        | 2.3%      | 7.2%         |
-| D2C-Instruct     | 6.7B | 44.4%     | 12.1%       | 9.1%      | 19.4%        |
-| D2C-Instruct + CoT | 6.7B | 44.4%   | 17.6%       | 4.5%      | 21.1%        |
-| D2C-Instruct     | 33B  | 57.8%     | 22.0%       | 9.1%      | 27.8%        |
-| D2C-Instruct + CoT | 33B | 53.3%    | 25.3%       | 11.4%     | 28.9%        |
 

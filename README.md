@@ -3,10 +3,7 @@
 <p align="center">
 <img width="1000px" alt="D2C" src="pictures/logo.png">
 </p>
-<p align="center"><a href="https://www.deepseek.com/">[<img src="pictures/home.png" width="20px"> Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with D2C]</a> | <a href="#">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
-<p align="center">
-  <a href="#"><b>Paper Link</b>👁️</a>
-</p>
+D2C is an open source project that provides compact GPT-based models and tools for code generation and completion.
 <hr>
 
 
@@ -14,35 +11,17 @@
 
 D2C is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and an extra fill-in-the-blank task, to support project-level code completion and infilling. For coding capabilities, D2C achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks.
 
-<p align="center">
-<img src="pictures/result.png" alt="result" width="70%">
-</p>
 
 - **Massive Training Data**: Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.
 
 - **Highly Flexible & Scalable**: Offered in model sizes of 1B, 5.7B, 6.7B and 33B, enabling users to choose the setup most suitable for their requirements.
 
-- **Superior Model Performance**: State-of-the-art performance among publicly available code models on HumanEval, MultiPL-E, MBPP, DS-1000, and APPS benchmarks.
 
 - **Advanced Code Completion Capabilities**: A window size of 16K and a fill-in-the-blank task, supporting project-level code completion and infilling tasks.
 
 #### Supported Programming Languages
 `['ada', 'agda', 'alloy', 'antlr', 'applescript', 'assembly', 'augeas', 'awk', 'batchfile', 'bluespec', 'c', 'c-sharp', 'clojure', 'cmake', 'coffeescript', 'common-lisp', 'cpp', 'css', 'cuda', 'dart', 'dockerfile', 'elixir', 'elm', 'emacs-lisp', 'erlang', 'f-sharp', 'fortran', 'glsl', 'go', 'groovy', 'haskell', 'html', 'idris', 'isabelle', 'java', 'java-server-pages', 'javascript', 'json', 'julia', 'jupyter-notebook', 'kotlin', 'lean', 'literate-agda', 'literate-coffeescript', 'literate-haskell', 'lua', 'makefile', 'maple', 'markdown', 'mathematica', 'matlab', 'ocaml', 'pascal', 'perl', 'php', 'powershell', 'prolog', 'protocol-buffer', 'python', 'r', 'racket', 'restructuredtext', 'rmarkdown', 'ruby', 'rust', 'sas', 'scala', 'scheme', 'shell', 'smalltalk', 'solidity', 'sparql', 'sql', 'stan', 'standard-ml', 'stata', 'systemverilog', 'tcl', 'tcsh', 'tex', 'thrift', 'typescript', 'verilog', 'vhdl', 'visual-basic', 'xslt', 'yacc', 'yaml', 'zig']`
 
-### 2. Evaluation Results
-We evaluate D2C on various coding-related benchmarks.
-Only `pass@1` results on HumanEval (Python and Multilingual), MBPP, and DS-1000 are reported here:
-
-<p align="center">
-<img src="pictures/table.png" alt="table" width="70%">
-</p>
-
-
-The result shows that D2C-Base-33B significantly outperforms existing open-source code LLMs. Compared with CodeLlama-34B, it leads by 7.9%, 9.3%, 10.8% and 5.9% respectively on HumanEval Python, HumanEval Multilingual, MBPP and DS-1000.
-Surprisingly, our D2C-Base-7B reaches the performance of CodeLlama-34B.
-The D2C-Instruct-33B model after instruction tuning outperforms GPT35-turbo on HumanEval and achieves comparable results with GPT35-turbo on MBPP.
-
-More evaluation details can be found in the [Detailed Evaluation](#6-detailed-evaluation-results).
 
 
 ### 3. Procedure of Data Creation and Model Training
@@ -81,14 +60,21 @@ Launch the demo after installing its requirements:
 python demo/app.py
 ```
 
+### Minimal Local Generation
+
+Run the tiny model on CPU with:
+```bash
+python src/generate.py --start "Hello" --num_tokens 50
+```
+
 Here are some examples of how to use our model.
 
 #### 1) Code Completion
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("/path/to/model")
+model = AutoModelForCausalLM.from_pretrained("/path/to/model")
 input_text = "#write a quick sort algorithm"
 inputs = tokenizer(input_text, return_tensors="pt").to(model.device)
 outputs = model.generate(**inputs, max_length=128)
@@ -114,8 +100,8 @@ def quick_sort(arr):
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("/path/to/model")
+model = AutoModelForCausalLM.from_pretrained("/path/to/model")
 input_text = """<｜fim▁begin｜>def quick_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -141,8 +127,8 @@ This code will output the following result:
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-instruct", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-instruct", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("/path/to/model")
+model = AutoModelForCausalLM.from_pretrained("/path/to/model")
 messages=[
     { 'role': 'user', 'content': "write a quick sort algorithm in python."}
 ]
@@ -190,8 +176,8 @@ You are an AI programming assistant, utilizing the D2C model, developed by D2C C
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
-tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("deepseek-ai/d2c-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("/path/to/model")
+model = AutoModelForCausalLM.from_pretrained("/path/to/model")
 
 input_text = """#utils.py
 import torch
@@ -294,14 +280,14 @@ pip install -r requirements-finetune.txt
 Please follow [Sample Dataset Format](#) to prepare your training data.
 Each line is a json-serialized string with two required fields `instruction` and `output`.
 
-After data preparation, you can use the sample shell script to finetune `deepseek-ai/d2c-6.7b-instruct`. 
+After data preparation, you can use the sample shell script to finetune your model.
 Remember to specify `DATA_PATH`, `OUTPUT_PATH`.
 And please choose appropriate hyper-parameters(e.g., `learning_rate`, `per_device_train_batch_size`) according to your scenario.
 
 ```bash
 DATA_PATH="<your_data_path>"
 OUTPUT_PATH="<your_output_path>"
-MODEL="deepseek-ai/d2c-6.7b-instruct"
+MODEL="/path/to/model"
 
 cd finetune && deepspeed finetune_d2c.py \
     --model_name_or_path $MODEL_PATH \
@@ -326,71 +312,6 @@ cd finetune && deepspeed finetune_d2c.py \
     --bf16 True
 ```
 
-### 6. Detailed Evaluation Results
-
-The reproducible code for the following evaluation results can be found in the [Evaluation](https://github.com/deepseek-ai/d2c/tree/main/Evaluation) directory.
-#### 1) Multilingual HumanEval Benchmark
-![HumanEval](pictures/HumanEval.png)
-
-#### 2) MBPP Benchmark
-<img src="pictures/MBPP.png" alt="MBPP" width="40%">
-
-#### 3) DS-1000 Benchmark
-![DS-1000](pictures/DS-1000.png)
-
-#### 4) Program-Aid Math Reasoning Benchmark
-![Math](pictures/Math.png)
-
-### Inference with vLLM
-
-You can also employ [vLLM](https://github.com/vllm-project/vllm) for high-throughput inference.
-
-**Text Completion**
-
-```python
-from vllm import LLM, SamplingParams
-
-tp_size = 4 # Tensor Parallelism
-sampling_params = SamplingParams(temperature=0.7, top_p=0.9, max_tokens=100)
-model_name = "deepseek-ai/d2c-6.7b-base"
-llm = LLM(model=model_name, trust_remote_code=True, gpu_memory_utilization=0.9, tensor_parallel_size=tp_size)
-
-prompts = [
-    "If everyone in a country loves one another,",
-    "The research should also focus on the technologies",
-    "To determine if the label is correct, we need to"
-]
-outputs = llm.generate(prompts, sampling_params)
-
-generated_text = [output.outputs[0].text for output in outputs]
-print(generated_text)
-```
-
-**Chat Completion**
-
-```python
-from transformers import AutoTokenizer
-from vllm import LLM, SamplingParams
-
-tp_size = 4 # Tensor Parallelism
-sampling_params = SamplingParams(temperature=0.7, top_p=0.9, max_tokens=100)
-model_name = "deepseek-ai/d2c-6.7b-instruct"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-llm = LLM(model=model_name, trust_remote_code=True, gpu_memory_utilization=0.9, tensor_parallel_size=tp_size)
-
-messages_list = [
-    [{"role": "user", "content": "Who are you?"}],
-    [{"role": "user", "content": "What can you do?"}],
-    [{"role": "user", "content": "Explain Transformer briefly."}],
-]
-prompts = [tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=False) for messages in messages_list]
-
-sampling_params.stop = [tokenizer.eos_token]
-outputs = llm.generate(prompts, sampling_params)
-
-generated_text = [output.outputs[0].text for output in outputs]
-print(generated_text)
-```
 
 ### 7. Q&A
 
@@ -424,4 +345,4 @@ See the [LICENSE-CODE](LICENSE-CODE) and [LICENSE-MODEL](LICENSE-MODEL) for more
 
 ### 11. Contact
 
-If you have any questions, please raise an issue or contact us at [service@deepseek.com](mailto:service@deepseek.com).
+If you have any questions, please open an issue on this repository.

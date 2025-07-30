@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', type=str, default=Path(__file__).parent.joinpath(f"data/{version}.jsonl").as_posix())
-    parser.add_argument('--model_name_or_path', type=str, default='deepseek-ai/d2c-7b-instruct')
+    parser.add_argument('--model_name_or_path', type=str, default='/path/to/model')
     parser.add_argument('--saved_path', type=str, default=f'output/{version}.d2c-7b-instruct.jsonl')
     parser.add_argument('--cot', action='store_true', default=False)
     args = parser.parse_args()

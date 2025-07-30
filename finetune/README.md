@@ -11,14 +11,14 @@ pip install -r ../requirements-finetune.txt
 Please follow [Sample Dataset Format](https://huggingface.co/datasets/nickrosh/Evol-Instruct-Code-80k-v1) to prepare your training data.
 Each line is a json-serialized string with two required fields `instruction` and `output`.
 
-After data preparation, you can use the sample shell script to finetune `deepseek-ai/d2c-6.7b-instruct`. 
+After data preparation, you can use the sample shell script to finetune your model.
 Remember to specify `DATA_PATH`, `OUTPUT_PATH`.
 And please choose appropriate hyper-parameters(e.g., `learning_rate`, `per_device_train_batch_size`) according to your scenario.
 
 ```bash
 DATA_PATH="<your_data_path>"
 OUTPUT_PATH="<your_output_path>"
-MODEL_PATH="deepseek-ai/d2c-6.7b-instruct"
+MODEL_PATH="/path/to/model"
 
 deepspeed finetune_d2c.py \
     --model_name_or_path $MODEL_PATH \
