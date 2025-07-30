@@ -14,7 +14,8 @@ def watch(interval: int = 10) -> None:
     while True:
         try:
             files = {
-                f for f in os.listdir(DATASET_DIR)
+                f
+                for f in os.listdir(DATASET_DIR)
                 if f.endswith((".py", ".json", ".md", ".sh"))
             }
             new_files = files - seen
@@ -33,6 +34,6 @@ def watch(interval: int = 10) -> None:
             log_failure(f"watcher error: {e}")
             time.sleep(interval)
 
+
 if __name__ == "__main__":
     watch()
-
