@@ -1,9 +1,6 @@
 # D2C
 
-<p align="center">
-<img width="1000px" alt="D2C" src="pictures/logo.png">
-</p>
-<p align="center"><a href="https://www.deepseek.com/">[<img src="pictures/home.png" width="20px"> Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with D2C]</a> | <a href="#">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
+<p align="center"><a href="https://www.deepseek.com/">[Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with D2C]</a> | <a href="#">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
 <p align="center">
   <a href="#"><b>Paper Link</b>👁️</a>
 </p>
@@ -14,9 +11,6 @@
 
 D2C is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and an extra fill-in-the-blank task, to support project-level code completion and infilling. For coding capabilities, D2C achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks.
 
-<p align="center">
-<img src="pictures/result.png" alt="result" width="70%">
-</p>
 
 - **Massive Training Data**: Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.
 
@@ -33,9 +27,6 @@ D2C is composed of a series of code language models, each trained from scratch o
 We evaluate D2C on various coding-related benchmarks.
 Only `pass@1` results on HumanEval (Python and Multilingual) and MBPP are reported here:
 
-<p align="center">
-<img src="pictures/table.png" alt="table" width="70%">
-</p>
 
 
 The result shows that D2C-Base-33B significantly outperforms existing open-source code LLMs. Compared with CodeLlama-34B, it leads by 7.9%, 9.3%, and 10.8% respectively on HumanEval Python, HumanEval Multilingual, and MBPP.
@@ -54,7 +45,6 @@ More evaluation details can be found in the [Detailed Evaluation](#6-detailed-ev
 - Step 3: Concatenating dependent files to form a single example and employ repo-level minhash for deduplication.
 - Step 4: Further filtering out low-quality code, such as codes with syntax errors or poor readability.
 
-<img src="pictures/data_clean.png" alt="data_creation" width="100%">
 
 #### Model Training
 
@@ -62,7 +52,6 @@ More evaluation details can be found in the [Detailed Evaluation](#6-detailed-ev
 - Step 2: Further Pre-training using an extended 16K window size on an additional 200B tokens, resulting in foundational models (**D2C-Base**).
 - Step 3: Instruction Fine-tuning on 2B tokens of instruction data, resulting in instruction-tuned models (**D2C-Instruct**).
 
-<img src="pictures/model_pretraining.png" alt="model_pretraining" width="100%">
 
 
 ### 4. How to Use
@@ -295,7 +284,6 @@ The reproducible code for the following evaluation results can be found in the [
 ![HumanEval](pictures/HumanEval.png)
 
 #### 2) MBPP Benchmark
-<img src="pictures/MBPP.png" alt="MBPP" width="40%">
 
 
 #### 3) Program-Aid Math Reasoning Benchmark
