@@ -9,7 +9,6 @@ We provide a test script to evaluate the performance of the **d2c** model on cod
 ```
 pip install accelerate
 pip install attrdict
-pip install transformers
 pip install pytorch
 ```
 
@@ -21,7 +20,7 @@ We've created a sample script, **eval.sh**, that demonstrates how to test the **
 Additionally, for various programming languages, the execution path may differ. Please ensure you update the appropriate paths in the **humaneval/execution.py** file accordingly.
 
 ```bash
-MODEL_NAME_OR_PATH="deepseek-ai/d2c-1.3b-base"
+MODEL_NAME_OR_PATH="PATH_TO_LOCAL_MODEL"
 DATASET_ROOT="data/"
 LANGUAGE="python"
 python -m accelerate.commands.launch --config_file test_config.yaml eval_pal.py --logdir ${MODEL_NAME_OR_PATH} --language ${LANGUAGE} --dataroot ${DATASET_ROOT} 
@@ -31,10 +30,10 @@ To evaluate the instruction-based model, please follow the script below:
 ```bash
 LANG="python"
 OUPUT_DIR="output"
-MODEL="d2c-33b-instruct"
+MODEL="PATH_TO_LOCAL_MODEL"
 
 CUDA_VISIBLE_DEVICES=0,1 python eval_instruct.py \
-    --model "deepseek-ai/$MODEL" \
+    --model "$MODEL" \
     --output_path "$OUPUT_DIR/${LANG}.$MODEL.jsonl" \
     --language $LANG \
     --temp_dir $OUPUT_DIR
