@@ -1,7 +1,5 @@
 __pycache__/
-Evaluation/MBPP/eval_instruct.sh
-Evaluation/LeetCode/output/
 **/__pycache__/
 **/*.pyc
-Evaluation/**/output/
-Evaluation/**/data/
+logs/
+failures/
