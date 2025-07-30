@@ -70,10 +70,11 @@ Before proceeding, you'll need to install the necessary dependencies. The base d
 ```
 pip install -r requirements.txt
 ```
-If you would like to launch the Gradio demo or fine‑tune the model, install the corresponding extra requirements:
+If you would like to launch the Gradio demo, fine‑tune, or run the evaluation scripts, install the corresponding extra requirements:
 ```
 pip install -r requirements-demo.txt
 pip install -r requirements-finetune.txt
+pip install -r requirements-eval.txt
 ```
 
 Launch the demo after installing its requirements:
