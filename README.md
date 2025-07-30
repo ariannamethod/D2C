@@ -22,7 +22,7 @@ D2C is composed of a series of code language models, each trained from scratch o
 
 - **Highly Flexible & Scalable**: Offered in model sizes of 1B, 5.7B, 6.7B and 33B, enabling users to choose the setup most suitable for their requirements.
 
-- **Superior Model Performance**: State-of-the-art performance among publicly available code models on HumanEval, MultiPL-E, MBPP, DS-1000, and APPS benchmarks.
+- **Superior Model Performance**: State-of-the-art performance among publicly available code models on HumanEval, MultiPL-E, MBPP, and APPS benchmarks.
 
 - **Advanced Code Completion Capabilities**: A window size of 16K and a fill-in-the-blank task, supporting project-level code completion and infilling tasks.
 
@@ -31,14 +31,14 @@ D2C is composed of a series of code language models, each trained from scratch o
 
 ### 2. Evaluation Results
 We evaluate D2C on various coding-related benchmarks.
-Only `pass@1` results on HumanEval (Python and Multilingual), MBPP, and DS-1000 are reported here:
+Only `pass@1` results on HumanEval (Python and Multilingual) and MBPP are reported here:
 
 <p align="center">
 <img src="pictures/table.png" alt="table" width="70%">
 </p>
 
 
-The result shows that D2C-Base-33B significantly outperforms existing open-source code LLMs. Compared with CodeLlama-34B, it leads by 7.9%, 9.3%, 10.8% and 5.9% respectively on HumanEval Python, HumanEval Multilingual, MBPP and DS-1000.
+The result shows that D2C-Base-33B significantly outperforms existing open-source code LLMs. Compared with CodeLlama-34B, it leads by 7.9%, 9.3%, and 10.8% respectively on HumanEval Python, HumanEval Multilingual, and MBPP.
 Surprisingly, our D2C-Base-7B reaches the performance of CodeLlama-34B.
 The D2C-Instruct-33B model after instruction tuning outperforms GPT35-turbo on HumanEval and achieves comparable results with GPT35-turbo on MBPP.
 
@@ -335,10 +335,8 @@ The reproducible code for the following evaluation results can be found in the [
 #### 2) MBPP Benchmark
 <img src="pictures/MBPP.png" alt="MBPP" width="40%">
 
-#### 3) DS-1000 Benchmark
-![DS-1000](pictures/DS-1000.png)
 
-#### 4) Program-Aid Math Reasoning Benchmark
+#### 3) Program-Aid Math Reasoning Benchmark
 ![Math](pictures/Math.png)
 
 ### Inference with vLLM
