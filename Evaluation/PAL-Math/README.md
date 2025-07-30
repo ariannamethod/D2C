@@ -7,7 +7,7 @@ We provide a test script to evaluate the capability of the **d2c** model to solv
 ## 2. Setup
 
 ```
-pip install sympy==1.12 pebble timeout-decorator transformers
+pip install sympy==1.12 pebble timeout-decorator
 ```
 
 
@@ -17,7 +17,7 @@ pip install sympy==1.12 pebble timeout-decorator transformers
 We provide an example of testing the **d2c-1.3b-base** model on the **gsm8k** dataset using **8** GPUs. If you wish to use a different model or dataset, you can modify it as needed.
 
 ```bash
-MODEL_NAME_OR_PATH=deepseek-ai/d2c-1.3b-base
+MODEL_NAME_OR_PATH=PATH_TO_LOCAL_MODEL
 DATA=gsm8k # 'math' 'gsm8k' 'gsm-hard' 'svamp' 'tabmwp' 'asdiv' 'mawps'
 MODEL_DIR_NAME=${MODEL_NAME_OR_PATH##*/}
 GPU_NUM=8
