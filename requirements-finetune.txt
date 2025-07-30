@@ -1,5 +1,0 @@
-torch==2.0.1
-tqdm
-
-deepspeed==0.12.2
-tensorboardX
