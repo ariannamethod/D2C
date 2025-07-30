@@ -70,10 +70,9 @@ Before proceeding, you'll need to install the necessary dependencies. The base d
 ```
 pip install -r requirements.txt
 ```
-If you would like to launch the Gradio demo or fine‑tune the model, install the corresponding extra requirements:
+If you would like to launch the Gradio demo, install the corresponding extra requirements:
 ```
 pip install -r requirements-demo.txt
-pip install -r requirements-finetune.txt
 ```
 
 Launch the demo after installing its requirements:
@@ -284,9 +283,8 @@ In the following scenario, the D2C-6.7B model effectively calls a class **IrisCl
 ### 5. How to Fine-tune D2C
 
 This repository does not provide an official fine-tuning script. You can
-create your own training pipeline using the dependencies listed in
-`requirements-finetune.txt`. Prepare your dataset as JSON lines containing
-the fields `instruction` and `output`.
+create your own training pipeline. Prepare your dataset as JSON lines
+containing the fields `instruction` and `output`.
 
 ### 6. Detailed Evaluation Results
 

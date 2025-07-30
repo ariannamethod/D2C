@@ -5,3 +5,4 @@ Evaluation/LeetCode/output/
 **/*.pyc
 Evaluation/**/output/
 Evaluation/**/data/
+*.jsonl
