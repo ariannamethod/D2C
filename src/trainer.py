@@ -10,6 +10,6 @@ def train() -> None:
     # Placeholder for actual training logic
     log_event(f"training on {len(mem)} items")
 
+
 if __name__ == "__main__":
     train()
-
