@@ -7,7 +7,7 @@ We provide a test script to evaluate the capability of the **d2c** model to solv
 ## 2. Setup
 
 ```
-pip install sympy==1.12 pebble timeout-decorator
+pip install -r ../../requirements-eval.txt
 ```
 
 
