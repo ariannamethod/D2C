@@ -1,11 +1,5 @@
 # D2C
 
-<p align="center"><a href="https://www.deepseek.com/">[Homepage]</a> | <a href="https://coder.deepseek.com/">[🤖 Chat with D2C]</a> | <a href="#">[🤗 Models Download]</a> | <a href="https://discord.gg/Tc7c45Zzu5">[Discord]</a> | <a href="https://github.com/guoday/assert/blob/main/QR.png?raw=true">[WeChat (微信)]</a></p>
-<p align="center">
-  <a href="#"><b>Paper Link</b>👁️</a>
-</p>
-<hr>
-
 
 ### 1. Introduction to D2C
 
